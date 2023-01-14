@@ -20,6 +20,10 @@ public class Improve extends AppCompatActivity {
     Button steal;
     static public TextView text;
 
+    int price0 = 100;
+    int price1 = 200;
+    int price2 = 300;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -31,6 +35,9 @@ public class Improve extends AppCompatActivity {
         steal = (Button) findViewById(R.id.steal);
         text = (TextView) findViewById(R.id.count);
         text.setText(MainActivity.count + "");
+        angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
+        swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
+        steal.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
         Angry();
         swordLength();
         Steal();
@@ -54,7 +61,9 @@ public class Improve extends AppCompatActivity {
             public void onClick(View view) {
                 if (MainActivity.count >= 100){
                     MainActivity.plus_kill += 1;
-                    MainActivity.count -= 100;
+                    price0 += 5;
+                    angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
+                    MainActivity.count -= price0;
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
                 }
@@ -69,7 +78,9 @@ public class Improve extends AppCompatActivity {
             public void onClick(View view) {
                 if (MainActivity.count >= 200){
                     MainActivity.plus_kill += 3;
-                    MainActivity.count -= 200;
+                    price1 += 30;
+                    swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
+                    MainActivity.count -= price1;
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
                 }
@@ -83,7 +94,9 @@ public class Improve extends AppCompatActivity {
             public void onClick(View view) {
                 if (MainActivity.count >= 300){
                     MainActivity.plus_kill += 10;
-                    MainActivity.count -= 300;
+                    MainActivity.count -= price2;
+                    price2 += 100;
+                    steal.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
                 }
