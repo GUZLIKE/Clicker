@@ -2,13 +2,10 @@ package ru.guzlik.berserkclicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,11 +21,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        SharedPreferences preferences;
         kill = (ImageView) findViewById(R.id.kill);
         improve = (ImageView) findViewById(R.id.improve);
         text = (TextView) findViewById(R.id.count);
-        load();
+        Load();
         Kill();
         Improve();
     }
@@ -39,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 count += plus_kill;
                 text.setText(count + "");
-                save();
+                Save();
             }
         });
     }
@@ -57,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Метод сохранения кол-ва кликов
 
-    void save(){
+    void Save(){
         preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("clicks", count);
@@ -65,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Метод загрузки кол-ва кликов
-    void load(){
+    void Load(){
         preferences = getPreferences(MODE_PRIVATE);
         count = preferences.getInt("clicks", 0);
         text.setText(count + "");
