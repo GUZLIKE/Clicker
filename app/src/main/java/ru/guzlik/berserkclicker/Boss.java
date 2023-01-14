@@ -52,11 +52,11 @@ public class Boss extends AppCompatActivity {
 
 
     void fight(){
-        timer = new CountDownTimer(30000,1000) {
+        timer = new CountDownTimer(time*1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 time--;
-                fightTime.setText("ВРЕМЯ:" + time);
+                fightTime.setText("ВРЕМЯ:" + (time+1));
             }
             @Override
             public void onFinish() {
