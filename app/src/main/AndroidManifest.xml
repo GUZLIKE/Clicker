@@ -25,6 +25,10 @@
         <activity
             android:name=".Improve"
             android:exported="false"/>
+
+        <activity
+            android:name=".Boss"
+            android:exported="false"/>
     </application>
 
 

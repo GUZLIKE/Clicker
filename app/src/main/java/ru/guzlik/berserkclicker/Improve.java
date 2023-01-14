@@ -1,15 +1,12 @@
 package ru.guzlik.berserkclicker;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +15,7 @@ public class Improve extends AppCompatActivity {
 
     Button angry;
     Button swordLength;
-    Button steal;
+    Button evil;
     SharedPreferences preferences;
     static public TextView text;
 
@@ -31,19 +28,19 @@ public class Improve extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_improve);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.exit);
+        actionBar.setHomeAsUpIndicator(R.drawable.back);
         actionBar.setDisplayHomeAsUpEnabled(true);
         angry = (Button) findViewById(R.id.angry);
         swordLength = (Button) findViewById(R.id.swordLength);
-        steal = (Button) findViewById(R.id.steal);
+        evil = (Button) findViewById(R.id.evil);
         text = (TextView) findViewById(R.id.count);
         text.setText(MainActivity.count + "");
         angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
         swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
-        steal.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
+        evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
         Angry();
         swordLength();
-        Steal();
+        Evil();
         Load();
 
     }
@@ -79,7 +76,7 @@ public class Improve extends AppCompatActivity {
         price2 = preferences.getInt("price2", price2);
         angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
         swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
-        steal.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
+        evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
 
     }
 
@@ -107,8 +104,6 @@ public class Improve extends AppCompatActivity {
                     angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
                     MainActivity.count -= price0;
                     MainActivity.text.setText(MainActivity.count + "");
-                } else if (MainActivity.count < 0) {
-                    MainActivity.text.setText(MainActivity.count * 0 + "");
                 }
                 saveAngry();
             }
@@ -127,27 +122,23 @@ public class Improve extends AppCompatActivity {
                     MainActivity.count -= price1;
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
-                } else if (MainActivity.count < 0) {
-                    MainActivity.text.setText(MainActivity.count * 0 + "");
                 }
                 saveLength();
             }
         });
     }
 
-    void Steal(){
-        steal.setOnClickListener(new View.OnClickListener() {
+    void Evil(){
+        evil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (MainActivity.count >= 300){
                     MainActivity.plus_kill += 10;
                     MainActivity.count -= price2;
                     price2 += 50;
-                    steal.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
+                    evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
-                } else if (MainActivity.count < 0) {
-                    MainActivity.text.setText(MainActivity.count * 0 + "");
                 }
                 saveSteal();
             }

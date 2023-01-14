@@ -12,8 +12,8 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     static public int count = 0;
-    static public int plus_kill = 10;
-    ImageView kill, improve;
+    static public int plus_kill = 1;
+    ImageView kill, improve, knight;
     SharedPreferences preferences;
 
     static public TextView text;
@@ -23,10 +23,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         kill = (ImageView) findViewById(R.id.kill);
         improve = (ImageView) findViewById(R.id.improve);
+        knight = (ImageView) findViewById(R.id.knight);
         text = (TextView) findViewById(R.id.count);
         Load();
         Kill();
         Improve();
+        Boss();
     }
 
     void Kill(){
@@ -45,6 +47,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Improve.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+
+    void Boss(){
+        knight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this,Boss.class);
                 startActivity(intent);
             }
         });

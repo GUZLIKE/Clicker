@@ -46,7 +46,7 @@
         app:layout_constraintVertical_bias="0.55" />
 
     <Button
-        android:id="@+id/steal"
+        android:id="@+id/evil"
         android:layout_width="335dp"
         android:layout_height="72dp"
         android:background="@color/purple_200"
