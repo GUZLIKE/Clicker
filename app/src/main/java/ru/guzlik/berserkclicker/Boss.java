@@ -29,38 +29,12 @@ public class Boss extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.back);
-        actionBar.setDisplayHomeAsUpEnabled(true);
         boss = (ImageView) findViewById(R.id.boss);
         health = (TextView) findViewById(R.id.health);
         fightTime = (TextView) findViewById(R.id.time);
         boss.setEnabled(true);
         Time();
         Attack();
-//        timer = new CountDownTimer(30000,1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//            time--;
-//            fightTime.setText("ВРЕМЯ:" + time);
-//
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                boss.setEnabled(false);
-//            }
-//        };
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 
