@@ -50,8 +50,9 @@ public class Boss extends AppCompatActivity {
         fight();
     }
 
+
     void fight(){
-        timer = new CountDownTimer(time * 1000,1000) {
+        timer = new CountDownTimer(30000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 time--;
