@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="50dp"
+        android:id="@+id/count"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="84dp" />
+
+
+
+    <Button
+        android:background="@color/purple_200"
+        android:text="ГНЕВ - 100 (+1 клик)"
+        android:textSize="20dp"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:id="@+id/angry"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintVertical_bias="0.313" />
+
+    <Button
+        android:background="@color/purple_200"
+        android:text="ДЛИНА МЕЧА - 200 (+3 клика)"
+        android:textSize="20dp"
+        android:layout_width="237dp"
+        android:layout_height="71dp"
+        android:id="@+id/swordLength"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <Button
+        android:background="@color/purple_200"
+        android:text="СПИЗДИТЬ ИДЕЮ ИЛЬИ - 300 (+10 кликов)"
+        android:layout_width="335dp"
+        android:layout_height="72dp"
+        android:id="@+id/steal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/count"
+        app:layout_constraintVertical_bias="0.801" />
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
