@@ -27,9 +27,9 @@ public class Improve extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_improve);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.back);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.setHomeAsUpIndicator(R.drawable.back);
+//        actionBar.setDisplayHomeAsUpEnabled(true);
         angry = (Button) findViewById(R.id.angry);
         swordLength = (Button) findViewById(R.id.swordLength);
         evil = (Button) findViewById(R.id.evil);
@@ -80,15 +80,15 @@ public class Improve extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item){
+//        switch (item.getItemId()){
+//            case android.R.id.home:
+//                this.finish();
+//                return true;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
 
     /*
     TODO В методах покупки улучшений, может произойти ситуация, когда число кликов будет
