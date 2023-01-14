@@ -1,94 +1,90 @@
 package ru.guzlik.berserkclicker;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import org.w3c.dom.Text;
 
 import java.security.SecureRandom;
 import java.util.Random;
 
 public class Boss extends AppCompatActivity {
 
-    static public int damage = MainActivity.plus_kill;
+    public int damage = MainActivity.plus_kill;
     Random random = new SecureRandom();
     int time = random.nextInt(60);
-    int health_boss = random.nextInt(300);
+    int clicks = 0;
+    int health_boss = random.nextInt(50);
     ImageView boss;
-    TextView health, fightTime;
+    ConstraintLayout layoutFight;
+    TextView health, fightTime, fightClick;
     CountDownTimer timer;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_boss);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.back);
-        actionBar.setDisplayHomeAsUpEnabled(true);
+        layoutFight = (ConstraintLayout) findViewById(R.id.menuBoss);
         boss = (ImageView) findViewById(R.id.boss);
         health = (TextView) findViewById(R.id.health);
         fightTime = (TextView) findViewById(R.id.time);
+        fightClick = (TextView) findViewById(R.id.clicks);
         boss.setEnabled(true);
-        Time();
-        Attack();
-//        timer = new CountDownTimer(30000,1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//            time--;
-//            fightTime.setText("ВРЕМЯ:" + time);
-//
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                boss.setEnabled(false);
-//            }
-//        };
+        health.setText("ЗДОРОВЬЕ МОНСТРА: " + health_boss);
+        fightClick.setText("КЛИКОВ: " + clicks);
+        fight();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-        switch (item.getItemId()){
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
-    void Time(){
-        timer = new CountDownTimer(30000,1000) {
+    void fight(){
+        timer = new CountDownTimer(time * 1000,1000) {
             @Override
             public void onTick(long millisUntilFinished) {
                 time--;
                 fightTime.setText("ВРЕМЯ:" + time);
-
             }
-
             @Override
             public void onFinish() {
-                boss.setEnabled(true);
+                boss.setEnabled(false);
+                if (health_boss > 0) {
+                    Toast.makeText(getApplicationContext(), "Вы не успели, бонусы не начислены!", Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Ваши удары стали в 2x раза сильнее!", Toast.LENGTH_LONG).show();
+                    MainActivity.plus_kill*=2;
+                }
+                Intent intent = new Intent(Boss.this, MainActivity.class);
+                startActivity(intent);
             }
-        };
+        }.start();
 
-    }
-
-
-    void Attack(){
-        boss.setOnClickListener(new View.OnClickListener() {
+        layoutFight.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                health.setText("ЗДОРОВЬЕ:" + health_boss);
+            public void onClick(View view) {
+                clicks++;
                 health_boss -= damage;
-                timer.start();
+                if (health_boss <= 0){
+                    timer.cancel();
+                    timer.onFinish();
+                }
+                //ПОТОМ ДОБАВИТЬ. ТОЛЬКО ДЛЯ ДЕМОНСТРАЦИИ УВЕЛИЧЕНИЯ УРОНА КАЖДОГО КЛИКА
+//                else {
+                    health.setText("ЗДОРОВЬЕ МОНСТРА: " + health_boss);
+                    fightClick.setText("КЛИКОВ: " + clicks);
+//                }
             }
         });
     }

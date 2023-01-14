@@ -1,56 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/count"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.097" />
+    <RelativeLayout
+        android:layout_weight=".5"
+        android:id="@+id/mainMenuUp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/kill"
+            android:layout_centerHorizontal="true"
+            android:layout_width="189dp"
+            android:layout_height="191dp"
+            android:layout_marginTop="120dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/count"
+            app:srcCompat="@drawable/berserk"/>
+
+        <TextView
+            android:id="@+id/count"
+            android:layout_marginTop="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="50dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_weight=".5"
+        android:id="@+id/mainMenuDown"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="1"
+                    android:textSize="25dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="2"
+                    android:textSize="25dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="3"
+                    android:textSize="25dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="4"
+                    android:textSize="25dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="5"
+                    android:textSize="25dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="6"
+                    android:textSize="25dp"/>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:text="7"
+                    android:textSize="25dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/menuIcons"
+        android:layout_weight=".8320"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/improve"
+            android:layout_width="126dp"
+            android:layout_height="67dp"
+            android:layout_alignParentBottom="true"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/sword" />
+
+        <ImageView
+            android:id="@+id/knight"
+            android:layout_width="126dp"
+            android:layout_height="67dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/improve"
+            android:scaleType="fitXY"
+            app:srcCompat="@drawable/knight" />
+    </RelativeLayout>
 
 
-    <ImageView
-        android:id="@+id/kill"
-        android:layout_width="189dp"
-        android:layout_height="191dp"
-        android:layout_marginTop="136dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/count"
-        app:srcCompat="@drawable/berserk" />
-
-    <ImageView
-        android:id="@+id/improve"
-        android:layout_width="126dp"
-        android:layout_height="67dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kill"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/sword" />
-
-    <ImageView
-        android:id="@+id/knight"
-        android:layout_width="126dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="16dp"
-        android:scaleType="fitXY"
-        app:layout_constraintStart_toEndOf="@+id/improve"
-        app:layout_constraintTop_toTopOf="@+id/improve"
-        app:srcCompat="@drawable/knight" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

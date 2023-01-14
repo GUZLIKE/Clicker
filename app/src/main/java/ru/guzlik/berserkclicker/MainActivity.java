@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,25 +15,38 @@ public class MainActivity extends AppCompatActivity {
     static public int count = 0;
     static public int plus_kill = 1;
     ImageView kill, improve, knight;
-    SharedPreferences preferences;
+    RelativeLayout menuUp;
+    static SharedPreferences preferences;
 
     static public TextView text;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        kill = (ImageView) findViewById(R.id.kill);
+        menuUp = (RelativeLayout) findViewById(R.id.mainMenuUp);
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
         text = (TextView) findViewById(R.id.count);
+
         Load();
         Kill();
         Improve();
         Boss();
     }
 
+    /*
+    TODO сделать прокрутку улучшений - COMPLETE
+    TODO разделить экран на 2 части - COMPLETE
+    TODO сделать кнопку назад
+    TODO сделать количество улучшений рядом с кнопками
+    TODO починить - сделать сохранение улучшений (цены увеличиваются, а предмета нет)
+    TODO таймер не должен быть отрицательным - COMPLETE
+    TODO хп монстра не должен быть отрицательным - COMPLETE
+    TODO сделать анимацию нажатия кнопки
+    */
+
     void Kill(){
-        kill.setOnClickListener(new View.OnClickListener() {
+        menuUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 count += plus_kill;
@@ -65,8 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //Метод сохранения кол-ва кликов
-
-    void Save(){
+    public void Save(){
         preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("clicks", count);
@@ -74,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Метод загрузки кол-ва кликов
-    void Load(){
+    public void Load(){
         preferences = getPreferences(MODE_PRIVATE);
         count = preferences.getInt("clicks", 0);
         text.setText(count + "");
