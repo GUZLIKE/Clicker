@@ -55,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    //Метод сохранения кол-ва кликов
+
     void save(){
         preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
@@ -62,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
+    //Метод загрузки кол-ва кликов
     void load(){
         preferences = getPreferences(MODE_PRIVATE);
         count = preferences.getInt("clicks", 0);

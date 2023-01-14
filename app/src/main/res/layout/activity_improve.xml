@@ -48,7 +48,7 @@
 
     <Button
         android:background="@color/purple_200"
-        android:text="СПИЗДИТЬ ИДЕЮ ИЛЬИ - 300 (+10 кликов)"
+        android:text="ПРЕДЧУВСТВИЕ ЗЛА - 300 (+10 кликов)"
         android:layout_width="335dp"
         android:layout_height="72dp"
         android:id="@+id/steal"

@@ -68,7 +68,7 @@ public class Improve extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (MainActivity.count >= 200){
-                    MainActivity.plus_kill += 2;
+                    MainActivity.plus_kill += 3;
                     MainActivity.count -= 200;
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
@@ -82,7 +82,7 @@ public class Improve extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (MainActivity.count >= 300){
-                    MainActivity.plus_kill += 3;
+                    MainActivity.plus_kill += 10;
                     MainActivity.count -= 300;
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
