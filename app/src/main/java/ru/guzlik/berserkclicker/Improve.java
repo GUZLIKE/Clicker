@@ -98,11 +98,11 @@ public class Improve extends AppCompatActivity {
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.count >= 100){
+                if (MainActivity.count >= price0){
                     MainActivity.plus_kill += 1;
+                    MainActivity.count -= price0;
                     price0 += 5;
                     angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
-                    MainActivity.count -= price0;
                     MainActivity.text.setText(MainActivity.count + "");
                 }
                 saveAngry();
@@ -115,11 +115,11 @@ public class Improve extends AppCompatActivity {
         swordLength.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.count >= 200){
+                if (MainActivity.count >= price1){
                     MainActivity.plus_kill += 3;
+                    MainActivity.count -= price1;
                     price1 += 20;
                     swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
-                    MainActivity.count -= price1;
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
                 }
@@ -132,7 +132,7 @@ public class Improve extends AppCompatActivity {
         evil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (MainActivity.count >= 300){
+                if (MainActivity.count >= price2){
                     MainActivity.plus_kill += 10;
                     MainActivity.count -= price2;
                     price2 += 50;
