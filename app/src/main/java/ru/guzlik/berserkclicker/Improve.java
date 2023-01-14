@@ -93,7 +93,10 @@ public class Improve extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-
+    /*
+    TODO В методах покупки улучшений, может произойти ситуация, когда число кликов будет
+    TODO  отрицательным, нужно пофиксить
+     */
     void Angry(){
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -119,7 +122,7 @@ public class Improve extends AppCompatActivity {
             public void onClick(View view) {
                 if (MainActivity.count >= 200){
                     MainActivity.plus_kill += 3;
-                    price1 += 30;
+                    price1 += 20;
                     swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
                     MainActivity.count -= price1;
                     MainActivity.text.setText(MainActivity.count + "");
@@ -139,7 +142,7 @@ public class Improve extends AppCompatActivity {
                 if (MainActivity.count >= 300){
                     MainActivity.plus_kill += 10;
                     MainActivity.count -= price2;
-                    price2 += 100;
+                    price2 += 50;
                     steal.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
                     MainActivity.text.setText(MainActivity.count + "");
                     text.setText(MainActivity.count + "");
