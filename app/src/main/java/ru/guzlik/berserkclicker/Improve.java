@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ public class Improve extends AppCompatActivity {
     Button swordLength;
     Button evil;
     SharedPreferences preferences;
+    ImageView back;
     static public TextView text;
 
     int price0 = 100;
@@ -27,13 +29,11 @@ public class Improve extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_improve);
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setHomeAsUpIndicator(R.drawable.back);
-//        actionBar.setDisplayHomeAsUpEnabled(true);
         angry = (Button) findViewById(R.id.angry);
         swordLength = (Button) findViewById(R.id.swordLength);
         evil = (Button) findViewById(R.id.evil);
         text = (TextView) findViewById(R.id.count);
+        back = (ImageView) findViewById(R.id.back);
         text.setText(MainActivity.count + "");
         angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
         swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
@@ -90,6 +90,17 @@ public class Improve extends AppCompatActivity {
 //        return super.onOptionsItemSelected(item);
 //    }
 
+
+    void backButton(){
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+
     /*
     TODO В методах покупки улучшений, может произойти ситуация, когда число кликов будет
     TODO  отрицательным, нужно пофиксить
@@ -103,7 +114,7 @@ public class Improve extends AppCompatActivity {
                     price0 += 5;
                     angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
                     MainActivity.count -= price0;
-                    MainActivity.text.setText(MainActivity.count + "");
+                    text.setText(MainActivity.count + "");
                 }
                 saveAngry();
             }
