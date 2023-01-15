@@ -1,5 +1,6 @@
 package ru.guzlik.berserkclicker;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -38,6 +39,7 @@ public class Improve extends AppCompatActivity {
         angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
         swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
         evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
+        backButton();
         Angry();
         swordLength();
         Evil();
@@ -95,7 +97,8 @@ public class Improve extends AppCompatActivity {
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Improve.this,MainActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -114,12 +117,9 @@ public class Improve extends AppCompatActivity {
                     MainActivity.count -= price0;
                     price0 += 5;
                     angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
-<<<<<<< HEAD
                     MainActivity.count -= price0;
                     text.setText(MainActivity.count + "");
-=======
                     MainActivity.text.setText(MainActivity.count + "");
->>>>>>> ca3c72d88188d83e2b2aaa31fb27e977fe862ae2
                 }
                 saveAngry();
             }

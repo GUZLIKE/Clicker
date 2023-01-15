@@ -29,7 +29,7 @@ public class Boss extends AppCompatActivity {
     int time = random.nextInt(60);
     int clicks = 0;
     int health_boss = random.nextInt(50);
-    ImageView boss;
+    ImageView boss, back;
     ConstraintLayout layoutFight;
     TextView health, fightTime, fightClick;
     CountDownTimer timer;
@@ -41,6 +41,7 @@ public class Boss extends AppCompatActivity {
         setContentView(R.layout.activity_boss);
         layoutFight = (ConstraintLayout) findViewById(R.id.menuBoss);
         boss = (ImageView) findViewById(R.id.boss);
+        back = (ImageView) findViewById(R.id.back);
         health = (TextView) findViewById(R.id.health);
         fightTime = (TextView) findViewById(R.id.time);
         fightClick = (TextView) findViewById(R.id.clicks);
@@ -48,8 +49,20 @@ public class Boss extends AppCompatActivity {
         health.setText("ЗДОРОВЬЕ МОНСТРА: " + health_boss);
         fightClick.setText("КЛИКОВ: " + clicks);
         fight();
+        backButton();
     }
 
+
+
+    void backButton(){
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Boss.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     void fight(){
         timer = new CountDownTimer(time*1000,1000) {
