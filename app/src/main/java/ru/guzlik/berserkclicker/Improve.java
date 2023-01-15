@@ -44,7 +44,6 @@ public class Improve extends AppCompatActivity {
         swordLength();
         Evil();
         Load();
-
     }
 
 
@@ -79,7 +78,6 @@ public class Improve extends AppCompatActivity {
         angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
         swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
         evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
-
     }
 
 //    @Override
