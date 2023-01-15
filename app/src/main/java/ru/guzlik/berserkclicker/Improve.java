@@ -42,7 +42,6 @@ public class Improve extends AppCompatActivity {
         swordLength();
         Evil();
         Load();
-
     }
 
 
@@ -77,23 +76,8 @@ public class Improve extends AppCompatActivity {
         angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
         swordLength.setText("ДЛИНА МЕЧА (+3 КЛИКА) -" + price1);
         evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
-
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-//        switch (item.getItemId()){
-//            case android.R.id.home:
-//                this.finish();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-    /*
-    TODO В методах покупки улучшений, может произойти ситуация, когда число кликов будет
-    TODO  отрицательным, нужно пофиксить
-     */
     void Angry(){
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +87,7 @@ public class Improve extends AppCompatActivity {
                     MainActivity.count -= price0;
                     price0 += 5;
                     angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
+                    text.setText(MainActivity.count + "");
                     MainActivity.text.setText(MainActivity.count + "");
                 }
                 saveAngry();
