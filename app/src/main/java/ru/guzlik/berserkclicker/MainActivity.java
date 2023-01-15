@@ -40,21 +40,11 @@ public class MainActivity extends AppCompatActivity {
         swordLength = (Button) findViewById(R.id.buttonSwordLength);
         evil = (Button) findViewById(R.id.buttonEvil);
         armor = (Button) findViewById(R.id.buttonArmor);
-
-
-
-
-
         textCountAngry = (TextView) findViewById(R.id.textCountAngry);
         textCostAngry = (TextView) findViewById(R.id.textCostAngry);
-
-
-
-
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
         text = (TextView) findViewById(R.id.count);
-
         Load();
         Buttons();
     }
@@ -62,12 +52,13 @@ public class MainActivity extends AppCompatActivity {
     /*
     TODO сделать прокрутку улучшений - COMPLETE
     TODO разделить экран на 2 части - COMPLETE
-    TODO сделать кнопку назад
-    TODO сделать количество улучшений рядом с кнопками
+    TODO сделать кнопку назад - COMPLETE
+    TODO сделать количество улучшений рядом с кнопками - COMPLETE
     TODO починить - сделать сохранение улучшений (цены увеличиваются, а предмета нет)
     TODO таймер не должен быть отрицательным - COMPLETE
     TODO хп монстра не должен быть отрицательным - COMPLETE
     TODO сделать анимацию нажатия кнопки
+    TODO сделать таймер для усиления после убийства босса
     */
 
     void Buttons(){
@@ -104,7 +95,8 @@ public class MainActivity extends AppCompatActivity {
                     count -= price0;
                     price0 += 20;
                     countAngry++;
-                    textCountAngry.setText("КУПЛЕНО: " + countAngry);
+                    plus_kill += 1;
+                    textCountAngry.setText("УРОВЕНЬ: " + countAngry);
                     textCostAngry.setText("СТОИМОСТЬ: " + price0);
                     text.setText(count + "");
                     Save();

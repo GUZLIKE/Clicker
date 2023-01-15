@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:text=".MainActivity">
 
     <RelativeLayout
         android:layout_weight=".5"
@@ -17,14 +17,14 @@
 
         <ImageView
             android:id="@+id/kill"
-            android:layout_centerHorizontal="true"
             android:layout_width="189dp"
             android:layout_height="191dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="120dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/count"
-            app:srcCompat="@drawable/berserk"/>
+            app:srcCompat="@drawable/berserk" />
 
         <TextView
             android:id="@+id/count"
@@ -217,11 +217,10 @@
 
         <ImageView
             android:id="@+id/improve"
-            android:layout_width="126dp"
+            android:layout_width="150dp"
             android:layout_height="67dp"
             android:layout_alignParentBottom="true"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/sword" />
+            app:srcCompat="@drawable/sword_down" />
 
         <ImageView
             android:id="@+id/knight"
@@ -229,8 +228,16 @@
             android:layout_height="67dp"
             android:layout_alignParentBottom="true"
             android:layout_toRightOf="@+id/improve"
-            android:scaleType="fitXY"
-            app:srcCompat="@drawable/knight" />
+            app:srcCompat="@drawable/mark" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="126dp"
+            android:layout_height="67dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="0dp"
+            android:layout_toRightOf="@+id/knight"
+            app:srcCompat="@drawable/ded" />
     </RelativeLayout>
 
 
