@@ -5,20 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
 public class MainActivity extends AppCompatActivity {
 
     static public int count = 0;
     int countAngry = 0;
-    int countSwordLegth = 0;
+    int countSwordLength = 0;
     int countEvil = 0;
     int countArmor = 0;
 

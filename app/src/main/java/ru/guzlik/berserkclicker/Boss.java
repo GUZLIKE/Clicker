@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +33,7 @@ public class Boss extends AppCompatActivity {
     ImageView boss, back;
     ConstraintLayout layoutFight;
     TextView health, fightTime, fightClick, damm;
-    CountDownTimer timer;
+    public static CountDownTimer timer;
 
 
     @Override
@@ -61,6 +62,7 @@ public class Boss extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Boss.this,MainActivity.class);
                 startActivity(intent);
+                timer.cancel();
             }
         });
     }
@@ -102,6 +104,15 @@ public class Boss extends AppCompatActivity {
 //                }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        try {
+            Intent intent = new Intent(Boss.this, MainActivity.class); startActivity(intent); timer.cancel();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }
