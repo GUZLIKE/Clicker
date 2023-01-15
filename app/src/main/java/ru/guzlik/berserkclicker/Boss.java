@@ -31,7 +31,7 @@ public class Boss extends AppCompatActivity {
     int health_boss = random.nextInt(50);
     ImageView boss, back;
     ConstraintLayout layoutFight;
-    TextView health, fightTime, fightClick;
+    TextView health, fightTime, fightClick, damm;
     CountDownTimer timer;
 
 
@@ -45,6 +45,7 @@ public class Boss extends AppCompatActivity {
         health = (TextView) findViewById(R.id.health);
         fightTime = (TextView) findViewById(R.id.time);
         fightClick = (TextView) findViewById(R.id.clicks);
+        damm = (TextView) findViewById(R.id.damm);
         boss.setEnabled(true);
         health.setText("ЗДОРОВЬЕ МОНСТРА: " + health_boss);
         fightClick.setText("КЛИКОВ: " + clicks);
