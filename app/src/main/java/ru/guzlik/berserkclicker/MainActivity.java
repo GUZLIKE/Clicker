@@ -154,7 +154,7 @@ public class MainActivity extends AppCompatActivity {
                     count -= price2;
                     price2 += 50;
                     textCountEvil.setText("УРОВЕНЬ:" + countEvil);
-                    textCostLength.setText("СТОИМОСТЬ:" + price2);
+                    textCostEvil.setText("СТОИМОСТЬ:" + price2);
                     text.setText(count + "");
                 }
             }

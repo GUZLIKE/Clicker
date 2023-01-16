@@ -36,15 +36,6 @@
 
     </RelativeLayout>
 
-
-<!--    <Button-->
-<!--        android:id="@+id/my_button"-->
-<!--        android:layout_centerHorizontal="true"-->
-<!--        android:layout_marginTop="100dp"-->
-<!--        android:onClick="onSlideViewButtonClick"-->
-<!--        android:layout_width="150dp"-->
-<!--        android:layout_height="wrap_content"/>-->
-
     <LinearLayout
         android:id="@+id/my_view"
         android:background="#000000"
@@ -59,42 +50,62 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-
                 <ScrollView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:background="@drawable/frame">
 
                         <FrameLayout
-                            android:layout_height="100dp"
+                            android:layout_height="150dp"
                             android:layout_width="match_parent">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ЗДЕСЬ ПОКА НИЧЕГО НЕТ"
+                                android:textSize="20dp"
+                                android:layout_gravity="center_horizontal|center_vertical"
+                                android:elevation = "10dp"/>
+
+                        </FrameLayout>
+
+
+                        <FrameLayout
+                            android:layout_height="86dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp">
+
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ГНЕВ\n(+1 клик)"
                                 android:textSize="20dp"
-                                android:padding="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingLeft="10dp"
                                 android:elevation = "10dp"/>
 
                             <Button
                                 android:id="@+id/buttonAngry"
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp"/>
+                                android:layout_height="86dp"
+                                android:background="@drawable/my_border"/>
 
                             <TextView
                                 android:id="@+id/textCountAngry"
                                 android:layout_width="wrap_content"
-                                android:layout_height="100dp"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="bottom|right"
                                 android:elevation="10dp"
-                                android:padding="30dp"
                                 android:gravity="center"
+                                android:layout_marginRight="20dp"
                                 android:text="КУПИТЬ"
                                 android:textSize="25dp" />
 
@@ -104,78 +115,92 @@
                                 android:layout_height="100dp"
                                 android:layout_gravity="bottom|left"
                                 android:elevation="10dp"
-                                android:padding="10dp"
                                 android:gravity="bottom"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="10dp"
                                 android:text="СТОИМОСТЬ: 100"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
 
                         </FrameLayout>
 
                         <FrameLayout
-                            android:layout_height="100dp"
-                            android:layout_width="match_parent">
+                            android:layout_height="86dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp">
+
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ДЛИНА МЕЧА\n(+3 клика)"
                                 android:textSize="20dp"
-                                android:padding="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingLeft="10dp"
                                 android:elevation = "10dp"/>
 
                             <Button
                                 android:id="@+id/buttonSwordLength"
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp"/>
+                                android:background="@drawable/my_border"
+                                android:layout_height="86dp"/>
 
                             <TextView
                                 android:id="@+id/textCountLength"
                                 android:layout_width="wrap_content"
-                                android:layout_height="100dp"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="bottom|right"
                                 android:elevation="10dp"
-                                android:padding="30dp"
                                 android:gravity="center"
+                                android:layout_marginRight="20dp"
                                 android:text="КУПИТЬ"
                                 android:textSize="25dp" />
+
                             <TextView
                                 android:id="@+id/textCostLength"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
                                 android:layout_gravity="bottom|left"
                                 android:elevation="10dp"
-                                android:padding="10dp"
                                 android:gravity="bottom"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="10dp"
                                 android:text="СТОИМОСТЬ: 200"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
 
                         </FrameLayout>
 
                         <FrameLayout
-                            android:layout_height="100dp"
-                            android:layout_width="match_parent">
+                            android:layout_height="86dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="ПРЕДЧУВСТВИЕ ЗЛА\n(+10 кликов)"
                                 android:textSize="20dp"
-                                android:padding="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingLeft="10dp"
                                 android:elevation = "10dp"/>
 
                             <Button
                                 android:id="@+id/buttonEvil"
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp"/>
+                                android:layout_height="86dp"
+                                android:background="@drawable/my_border"/>
 
                             <TextView
                                 android:id="@+id/textCountEvil"
                                 android:layout_width="wrap_content"
-                                android:layout_height="100dp"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="bottom|right"
                                 android:elevation="10dp"
-                                android:padding="30dp"
                                 android:gravity="center"
+                                android:layout_marginRight="20dp"
                                 android:text="КУПИТЬ"
                                 android:textSize="25dp" />
                             <TextView
@@ -184,38 +209,44 @@
                                 android:layout_height="100dp"
                                 android:layout_gravity="bottom|left"
                                 android:elevation="10dp"
-                                android:padding="10dp"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="10dp"
                                 android:gravity="bottom"
                                 android:text="СТОИМОСТЬ: 300"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
 
                         </FrameLayout>
 
                         <FrameLayout
-                            android:layout_height="100dp"
-                            android:layout_width="match_parent">
+                            android:layout_height="86dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginRight="20dp"
+                            android:layout_marginBottom="10dp">
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="БРОНЯ БЕРСЕРКА\n(+30 кликов)"
                                 android:textSize="20dp"
-                                android:padding="10dp"
+                                android:paddingTop="5dp"
+                                android:paddingLeft="10dp"
                                 android:elevation = "10dp"/>
 
                             <Button
                                 android:id="@+id/buttonArmor"
                                 android:layout_width="match_parent"
-                                android:layout_height="100dp"/>
+                                android:layout_height="86dp"
+                                android:background="@drawable/my_border"/>
 
                             <TextView
                                 android:id="@+id/textCountArmor"
                                 android:layout_width="wrap_content"
-                                android:layout_height="100dp"
+                                android:layout_height="match_parent"
                                 android:layout_gravity="bottom|right"
                                 android:elevation="10dp"
-                                android:padding="30dp"
                                 android:gravity="center"
+                                android:layout_marginRight="20dp"
                                 android:text="КУПИТЬ"
                                 android:textSize="25dp" />
                             <TextView
@@ -224,10 +255,11 @@
                                 android:layout_height="100dp"
                                 android:layout_gravity="bottom|left"
                                 android:elevation="10dp"
-                                android:padding="10dp"
+                                android:paddingBottom="5dp"
+                                android:paddingLeft="10dp"
                                 android:gravity="bottom"
                                 android:text="СТОИМОСТЬ: 500"
-                                android:textSize="25dp" />
+                                android:textSize="20dp" />
                         </FrameLayout>
 
                     </LinearLayout>
