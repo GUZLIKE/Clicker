@@ -9,7 +9,7 @@
     <RelativeLayout
         android:id="@+id/mainMenuUp"
         android:layout_width="match_parent"
-        android:layout_height="717dp"
+        android:layout_height="match_parent"
         android:layout_weight=".5">
 
 
@@ -38,9 +38,10 @@
     <LinearLayout
         android:id="@+id/my_view"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:background="#000000"
+        android:layout_weight=".5"
         android:orientation="vertical">
 
         <RelativeLayout
