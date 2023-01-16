@@ -1,7 +1,5 @@
 package ru.guzlik.berserkclicker;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,8 +7,11 @@ import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
 
     static public int plus_kill = 1;
     ImageView improve, knight;
-    RelativeLayout menuUp, menuDown;
+    RelativeLayout menuDown;
+    LinearLayout menu;
     Button angry, swordLength, evil, armor;
     static SharedPreferences preferences;
 
@@ -47,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        menuUp = (RelativeLayout) findViewById(R.id.mainMenuUp);
 
         myView = findViewById(R.id.my_view);
         myView.setVisibility(View.INVISIBLE);
         isUp = false;
 
+        menu = (LinearLayout) findViewById(R.id.mainMenu);
         menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
         angry = (Button) findViewById(R.id.buttonAngry);
         swordLength = (Button) findViewById(R.id.buttonSwordLength);
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     void Click(){
-        menuUp.setOnClickListener(new View.OnClickListener() {
+        menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 count += plus_kill;
