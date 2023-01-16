@@ -21,21 +21,21 @@ public class MainActivity extends AppCompatActivity {
     boolean isUp;
     ////
     static public int count = 0;
-    int countAngry = 0;
-    int countSwordLength = 0;
-    int countEvil = 0;
-    int countArmor = 0;
+    static public int countAngry = 0;
+    static public int countSwordLength = 0;
+    static public int countEvil = 0;
+    static public int countArmor = 0;
 
-    static int price0 = 100;
+    static public int price0 = 100;
 
-    int price1 = 200;
+    static public int price1 = 200;
 
-    int price2 = 300;
+    static public int price2 = 300;
 
-    int price3 = 500;
+    static public int price3 = 500;
 
     static public int plus_kill = 1;
-    ImageView kill, improve, knight;
+    ImageView improve, knight;
     RelativeLayout menuUp, menuDown;
     Button angry, swordLength, evil, armor;
     static SharedPreferences preferences;
@@ -70,9 +70,10 @@ public class MainActivity extends AppCompatActivity {
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
         Click();
-        Load();
         Buttons();
         Upgrade();
+        Save.init(getApplicationContext());
+        new Save().load();
 
     }
 
@@ -96,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 count += plus_kill;
                 text.setText(count + "");
-                clicksSave();
+                new Save().save();
             }
         });
     }
@@ -125,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
                     textCountAngry.setText("УРОВЕНЬ: " + countAngry);
                     textCostAngry.setText("СТОИМОСТЬ: " + price0);
                     text.setText(count + "");
-                    clicksSave();
+                    new Save().save();
                 }
             }
         });
@@ -141,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
                     textCountLength.setText("УРОВЕНЬ:" + countSwordLength);
                     textCostLength.setText("СТОИМОСТЬ:" + price1);
                     text.setText(count + "");
+                    new Save().save();
                 }
             }
         });
@@ -156,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
                     textCountEvil.setText("УРОВЕНЬ:" + countEvil);
                     textCostLength.setText("СТОИМОСТЬ:" + price2);
                     text.setText(count + "");
+                    new Save().save();
                 }
             }
         });
@@ -171,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                     textCountArmor.setText("УРОВЕНЬ:" + countArmor);
                     textCostArmor.setText("СТОИМОСТЬ:" + price3);
                     text.setText(count + "");
+                    new Save().save();
                 }
             }
         });
@@ -211,33 +215,4 @@ public class MainActivity extends AppCompatActivity {
         }
         isUp = !isUp;
     }
-
-
-    void Saves(){
-        //Метод сохранения кол-ва кликов
-            preferences = getPreferences(MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putInt("clicks", count);
-            editor.commit();
-
-
-    }
-
-
-
-    //Метод сохранения кол-ва кликов
-    public void clicksSave(){
-        preferences = getPreferences(MODE_PRIVATE);
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("clicks", count);
-        editor.commit();
-    }
-
-    //Метод загрузки кол-ва кликов
-    public void Load(){
-        preferences = getPreferences(MODE_PRIVATE);
-        count = preferences.getInt("clicks", 0);
-        text.setText(count + "");
-    }
-
 }
