@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -13,6 +14,12 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    ////
+    Button myButton;
+    View myView;
+    boolean isUp;
+    ////
     static public int count = 0;
     int countAngry = 0;
     int countSwordLength = 0;
@@ -41,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         menuUp = (RelativeLayout) findViewById(R.id.mainMenuUp);
+
+        myView = findViewById(R.id.my_view);
+        myView.setVisibility(View.INVISIBLE);
+        isUp = false;
+
         menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
         angry = (Button) findViewById(R.id.buttonAngry);
         swordLength = (Button) findViewById(R.id.buttonSwordLength);
@@ -91,16 +103,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     void Buttons(){
-
-
-        improve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Improve.class);
-                startActivity(intent);
-                clicksSave();
-            }
-        });
 
         knight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -176,6 +178,39 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    public void slideUp(View view){
+        view.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight(),  // fromYDelta
+                0);                // toYDelta
+        animate.setDuration(500);
+        animate.setFillAfter(true);
+        view.startAnimation(animate);
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                0,                 // fromYDelta
+                view.getHeight()); // toYDelta
+        animate.setDuration(500);
+        animate.setFillAfter(true);
+        view.startAnimation(animate);
+    }
+
+    public void onSlideViewButtonClick(View view) {
+        if (isUp) {
+            slideDown(myView);
+        } else {
+            slideUp(myView);
+        }
+        isUp = !isUp;
+    }
 
 
     void Saves(){

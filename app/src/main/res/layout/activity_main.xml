@@ -5,14 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:text=".MainActivity">
+    android:orientation="vertical">
 
     <RelativeLayout
-        android:layout_weight=".5"
         android:id="@+id/mainMenuUp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="717dp"
+        android:layout_weight=".5">
 
 
         <ImageView
@@ -28,202 +27,228 @@
 
         <TextView
             android:id="@+id/count"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
             android:text="0"
-            android:textSize="50dp"/>
+            android:textSize="50dp" />
 
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_weight=".5"
-        android:id="@+id/mainMenuDown"
+
+
+<!--    <Button-->
+<!--        android:id="@+id/my_button"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginTop="100dp"-->
+<!--        android:onClick="onSlideViewButtonClick"-->
+<!--        android:layout_width="150dp"-->
+<!--        android:layout_height="wrap_content"/>-->
+
+    <LinearLayout
+        android:id="@+id/my_view"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="200dp">
 
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <LinearLayout
+            <RelativeLayout
+                android:layout_weight=".5"
+                android:id="@+id/mainMenuDown"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:layout_height="match_parent">
 
-                <FrameLayout
-                    android:layout_height="100dp"
-                    android:layout_width="match_parent">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ГНЕВ\n(+1 клик)"
-                        android:textSize="20dp"
-                        android:padding="10dp"
-                        android:elevation = "10dp"/>
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-                    <Button
-                        android:id="@+id/buttonAngry"
+
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"/>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/textCountAngry"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|right"
-                        android:elevation="10dp"
-                        android:padding="30dp"
-                        android:gravity="center"
-                        android:text="КУПИТЬ"
-                        android:textSize="25dp" />
+                        <FrameLayout
+                            android:layout_height="100dp"
+                            android:layout_width="match_parent">
 
-                    <TextView
-                        android:id="@+id/textCostAngry"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|left"
-                        android:elevation="10dp"
-                        android:padding="10dp"
-                        android:gravity="bottom"
-                        android:text="СТОИМОСТЬ: 100"
-                        android:textSize="25dp" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ГНЕВ\n(+1 клик)"
+                                android:textSize="20dp"
+                                android:padding="10dp"
+                                android:elevation = "10dp"/>
 
-                </FrameLayout>
+                            <Button
+                                android:id="@+id/buttonAngry"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"/>
 
-                <FrameLayout
-                    android:layout_height="100dp"
-                    android:layout_width="match_parent">
+                            <TextView
+                                android:id="@+id/textCountAngry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|right"
+                                android:elevation="10dp"
+                                android:padding="30dp"
+                                android:gravity="center"
+                                android:text="КУПИТЬ"
+                                android:textSize="25dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ДЛИНА МЕЧА\n(+3 клика)"
-                        android:textSize="20dp"
-                        android:padding="10dp"
-                        android:elevation = "10dp"/>
+                            <TextView
+                                android:id="@+id/textCostAngry"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|left"
+                                android:elevation="10dp"
+                                android:padding="10dp"
+                                android:gravity="bottom"
+                                android:text="СТОИМОСТЬ: 100"
+                                android:textSize="25dp" />
 
-                    <Button
-                        android:id="@+id/buttonSwordLength"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"/>
+                        </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/textCountLength"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|right"
-                        android:elevation="10dp"
-                        android:padding="30dp"
-                        android:gravity="center"
-                        android:text="КУПИТЬ"
-                        android:textSize="25dp" />
-                    <TextView
-                        android:id="@+id/textCostLength"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|left"
-                        android:elevation="10dp"
-                        android:padding="10dp"
-                        android:gravity="bottom"
-                        android:text="СТОИМОСТЬ: 200"
-                        android:textSize="25dp" />
+                        <FrameLayout
+                            android:layout_height="100dp"
+                            android:layout_width="match_parent">
 
-                </FrameLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ДЛИНА МЕЧА\n(+3 клика)"
+                                android:textSize="20dp"
+                                android:padding="10dp"
+                                android:elevation = "10dp"/>
 
-                <FrameLayout
-                    android:layout_height="100dp"
-                    android:layout_width="match_parent">
+                            <Button
+                                android:id="@+id/buttonSwordLength"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ПРЕДЧУВСТВИЕ ЗЛА\n(+10 кликов)"
-                        android:textSize="20dp"
-                        android:padding="10dp"
-                        android:elevation = "10dp"/>
+                            <TextView
+                                android:id="@+id/textCountLength"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|right"
+                                android:elevation="10dp"
+                                android:padding="30dp"
+                                android:gravity="center"
+                                android:text="КУПИТЬ"
+                                android:textSize="25dp" />
+                            <TextView
+                                android:id="@+id/textCostLength"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|left"
+                                android:elevation="10dp"
+                                android:padding="10dp"
+                                android:gravity="bottom"
+                                android:text="СТОИМОСТЬ: 200"
+                                android:textSize="25dp" />
 
-                    <Button
-                        android:id="@+id/buttonEvil"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"/>
+                        </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/textCountEvil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|right"
-                        android:elevation="10dp"
-                        android:padding="30dp"
-                        android:gravity="center"
-                        android:text="КУПИТЬ"
-                        android:textSize="25dp" />
-                    <TextView
-                        android:id="@+id/textCostEvil"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|left"
-                        android:elevation="10dp"
-                        android:padding="10dp"
-                        android:gravity="bottom"
-                        android:text="СТОИМОСТЬ: 300"
-                        android:textSize="25dp" />
+                        <FrameLayout
+                            android:layout_height="100dp"
+                            android:layout_width="match_parent">
 
-                </FrameLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="ПРЕДЧУВСТВИЕ ЗЛА\n(+10 кликов)"
+                                android:textSize="20dp"
+                                android:padding="10dp"
+                                android:elevation = "10dp"/>
 
-                <FrameLayout
-                    android:layout_height="100dp"
-                    android:layout_width="match_parent">
+                            <Button
+                                android:id="@+id/buttonEvil"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"/>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="БРОНЯ БЕРСЕРКА\n(+30 кликов)"
-                        android:textSize="20dp"
-                        android:padding="10dp"
-                        android:elevation = "10dp"/>
+                            <TextView
+                                android:id="@+id/textCountEvil"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|right"
+                                android:elevation="10dp"
+                                android:padding="30dp"
+                                android:gravity="center"
+                                android:text="КУПИТЬ"
+                                android:textSize="25dp" />
+                            <TextView
+                                android:id="@+id/textCostEvil"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|left"
+                                android:elevation="10dp"
+                                android:padding="10dp"
+                                android:gravity="bottom"
+                                android:text="СТОИМОСТЬ: 300"
+                                android:textSize="25dp" />
 
-                    <Button
-                        android:id="@+id/buttonArmor"
-                        android:layout_width="match_parent"
-                        android:layout_height="100dp"/>
+                        </FrameLayout>
 
-                    <TextView
-                        android:id="@+id/textCountArmor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|right"
-                        android:elevation="10dp"
-                        android:padding="30dp"
-                        android:gravity="center"
-                        android:text="КУПИТЬ"
-                        android:textSize="25dp" />
-                    <TextView
-                        android:id="@+id/textCostArmor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="100dp"
-                        android:layout_gravity="bottom|left"
-                        android:elevation="10dp"
-                        android:padding="10dp"
-                        android:gravity="bottom"
-                        android:text="СТОИМОСТЬ: 500"
-                        android:textSize="25dp" />
-                </FrameLayout>
+                        <FrameLayout
+                            android:layout_height="100dp"
+                            android:layout_width="match_parent">
 
-            </LinearLayout>
-        </ScrollView>
-    </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="БРОНЯ БЕРСЕРКА\n(+30 кликов)"
+                                android:textSize="20dp"
+                                android:padding="10dp"
+                                android:elevation = "10dp"/>
+
+                            <Button
+                                android:id="@+id/buttonArmor"
+                                android:layout_width="match_parent"
+                                android:layout_height="100dp"/>
+
+                            <TextView
+                                android:id="@+id/textCountArmor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|right"
+                                android:elevation="10dp"
+                                android:padding="30dp"
+                                android:gravity="center"
+                                android:text="КУПИТЬ"
+                                android:textSize="25dp" />
+                            <TextView
+                                android:id="@+id/textCostArmor"
+                                android:layout_width="wrap_content"
+                                android:layout_height="100dp"
+                                android:layout_gravity="bottom|left"
+                                android:elevation="10dp"
+                                android:padding="10dp"
+                                android:gravity="bottom"
+                                android:text="СТОИМОСТЬ: 500"
+                                android:textSize="25dp" />
+                        </FrameLayout>
+
+                    </LinearLayout>
+                </ScrollView>
+            </RelativeLayout>
+
+    </LinearLayout>
+
+
+
+
     <RelativeLayout
         android:id="@+id/menuIcons"
-        android:layout_weight=".8320"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="67dp"
+        android:background="@color/black">
 
         <ImageView
             android:id="@+id/improve"
+            android:onClick="onSlideViewButtonClick"
+            android:layout_weight="1"
             android:layout_width="150dp"
             android:layout_height="67dp"
             android:layout_alignParentBottom="true"
@@ -231,6 +256,7 @@
 
         <ImageView
             android:id="@+id/knight"
+            android:layout_weight="1"
             android:layout_width="126dp"
             android:layout_height="67dp"
             android:layout_alignParentBottom="true"
@@ -239,6 +265,7 @@
 
         <ImageView
             android:id="@+id/imageView3"
+            android:layout_weight="1"
             android:layout_width="126dp"
             android:layout_height="67dp"
             android:layout_alignParentBottom="true"
