@@ -80,6 +80,7 @@
                         android:gravity="center"
                         android:text="КУПИТЬ"
                         android:textSize="25dp" />
+
                     <TextView
                         android:id="@+id/textCostAngry"
                         android:layout_width="wrap_content"
@@ -111,6 +112,7 @@
                         android:layout_height="100dp"/>
 
                     <TextView
+                        android:id="@+id/textCountLength"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_gravity="bottom|right"
@@ -120,6 +122,7 @@
                         android:text="КУПИТЬ"
                         android:textSize="25dp" />
                     <TextView
+                        android:id="@+id/textCostLength"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_gravity="bottom|left"
@@ -149,6 +152,7 @@
                         android:layout_height="100dp"/>
 
                     <TextView
+                        android:id="@+id/textCountEvil"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_gravity="bottom|right"
@@ -158,6 +162,7 @@
                         android:text="КУПИТЬ"
                         android:textSize="25dp" />
                     <TextView
+                        android:id="@+id/textCostEvil"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_gravity="bottom|left"
@@ -187,6 +192,7 @@
                         android:layout_height="100dp"/>
 
                     <TextView
+                        android:id="@+id/textCountArmor"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_gravity="bottom|right"
@@ -196,6 +202,7 @@
                         android:text="КУПИТЬ"
                         android:textSize="25dp" />
                     <TextView
+                        android:id="@+id/textCostArmor"
                         android:layout_width="wrap_content"
                         android:layout_height="100dp"
                         android:layout_gravity="bottom|left"

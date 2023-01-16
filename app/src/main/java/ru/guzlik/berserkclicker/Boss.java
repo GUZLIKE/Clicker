@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,8 +32,8 @@ public class Boss extends AppCompatActivity {
     int health_boss = random.nextInt(50);
     ImageView boss, back;
     ConstraintLayout layoutFight;
-    TextView health, fightTime, fightClick;
-    CountDownTimer timer;
+    TextView health, fightTime, fightClick, damm;
+    public static CountDownTimer timer;
 
 
     @Override
@@ -45,6 +46,7 @@ public class Boss extends AppCompatActivity {
         health = (TextView) findViewById(R.id.health);
         fightTime = (TextView) findViewById(R.id.time);
         fightClick = (TextView) findViewById(R.id.clicks);
+        damm = (TextView) findViewById(R.id.damm);
         boss.setEnabled(true);
         health.setText("ЗДОРОВЬЕ МОНСТРА: " + health_boss);
         fightClick.setText("КЛИКОВ: " + clicks);
@@ -60,6 +62,7 @@ public class Boss extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(Boss.this,MainActivity.class);
                 startActivity(intent);
+                timer.cancel();
             }
         });
     }
@@ -101,6 +104,15 @@ public class Boss extends AppCompatActivity {
 //                }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed(){
+        try {
+            Intent intent = new Intent(Boss.this, MainActivity.class); startActivity(intent); timer.cancel();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 }

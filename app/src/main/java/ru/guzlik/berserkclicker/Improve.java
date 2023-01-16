@@ -80,17 +80,6 @@ public class Improve extends AppCompatActivity {
         evil.setText("ПРЕДЧУВСТВИЕ ЗЛА (+10 КЛИКОВ) -" + price2);
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item){
-//        switch (item.getItemId()){
-//            case android.R.id.home:
-//                this.finish();
-//                return true;
-//        }
-//        return super.onOptionsItemSelected(item);
-//    }
-
-
     void backButton(){
         back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,7 +104,6 @@ public class Improve extends AppCompatActivity {
                     MainActivity.count -= price0;
                     price0 += 5;
                     angry.setText("ГНЕВ (+1 КЛИК) -" + price0);
-                    MainActivity.count -= price0;
                     text.setText(MainActivity.count + "");
                     MainActivity.text.setText(MainActivity.count + "");
                 }
