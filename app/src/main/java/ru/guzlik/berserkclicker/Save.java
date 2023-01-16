@@ -45,13 +45,11 @@ public class Save extends AppCompatActivity {
         MainActivity.textCountAngry.setText("УРОВЕНЬ: " + MainActivity.countAngry);
         MainActivity.textCostAngry.setText("СТОИМОСТЬ: " + MainActivity.price0);
         MainActivity.text.setText(MainActivity.count + "");
-        MainActivity.textCountLength.setText("УРОВЕНЬ:" + MainActivity.countSwordLength);
-        MainActivity.textCostLength.setText("СТОИМОСТЬ:" + MainActivity.price1);
-        MainActivity.textCountEvil.setText("УРОВЕНЬ:" + MainActivity.countEvil);
-        MainActivity.textCostLength.setText("СТОИМОСТЬ:" + MainActivity.price2);
-        MainActivity.textCountArmor.setText("УРОВЕНЬ:" + MainActivity.countArmor);
-        MainActivity.textCostArmor.setText("СТОИМОСТЬ:" + MainActivity.price3);
-
+        MainActivity.textCountLength.setText("УРОВЕНЬ: " + MainActivity.countSwordLength);
+        MainActivity.textCostLength.setText("СТОИМОСТЬ: " + MainActivity.price1);
+        MainActivity.textCountEvil.setText("УРОВЕНЬ :" + MainActivity.countEvil);
+        MainActivity.textCostLength.setText("СТОИМОСТЬ: " + MainActivity.price2);
+        MainActivity.textCountArmor.setText("УРОВЕНЬ: " + MainActivity.countArmor);
+        MainActivity.textCostArmor.setText("СТОИМОСТЬ: " + MainActivity.price3);
     }
-
 }
