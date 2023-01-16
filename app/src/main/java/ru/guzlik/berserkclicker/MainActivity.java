@@ -19,14 +19,23 @@ public class MainActivity extends AppCompatActivity {
     int countEvil = 0;
     int countArmor = 0;
 
-    int price0 = 100;
+    static int price0 = 100;
+
+    int price1 = 200;
+
+    int price2 = 300;
+
+    int price3 = 500;
+
     static public int plus_kill = 1;
     ImageView kill, improve, knight;
     RelativeLayout menuUp, menuDown;
     Button angry, swordLength, evil, armor;
     static SharedPreferences preferences;
 
-    static public TextView text, textCountAngry, textCostAngry;
+    static public TextView text, textCountAngry, textCostAngry, textCostLength, textCountLength,
+            textCostEvil,textCountEvil, textCountArmor, textCostArmor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +48,20 @@ public class MainActivity extends AppCompatActivity {
         armor = (Button) findViewById(R.id.buttonArmor);
         textCountAngry = (TextView) findViewById(R.id.textCountAngry);
         textCostAngry = (TextView) findViewById(R.id.textCostAngry);
+        textCostLength = (TextView) findViewById(R.id.textCostLength);
+        textCountLength = (TextView) findViewById(R.id.textCountLength);
+        text = (TextView) findViewById(R.id.count);
+        textCostEvil = (TextView) findViewById(R.id.textCostEvil);
+        textCountEvil = (TextView) findViewById(R.id.textCountEvil);
+        textCostArmor = (TextView) findViewById(R.id.textCostArmor);
+        textCountArmor = (TextView) findViewById(R.id.textCountArmor);
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
-        text = (TextView) findViewById(R.id.count);
+        Click();
         Load();
         Buttons();
+        Upgrade();
+
     }
 
     /*
@@ -58,22 +76,28 @@ public class MainActivity extends AppCompatActivity {
     TODO сделать таймер для усиления после убийства босса
     */
 
-    void Buttons(){
+
+    void Click(){
         menuUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 count += plus_kill;
                 text.setText(count + "");
-                Save();
+                clicksSave();
             }
         });
+    }
+
+
+    void Buttons(){
+
 
         improve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, Improve.class);
                 startActivity(intent);
-                Save();
+                clicksSave();
             }
         });
 
@@ -84,7 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
 
+    void Upgrade(){
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,20 +122,78 @@ public class MainActivity extends AppCompatActivity {
                     textCountAngry.setText("УРОВЕНЬ: " + countAngry);
                     textCostAngry.setText("СТОИМОСТЬ: " + price0);
                     text.setText(count + "");
-                    Save();
+                    clicksSave();
                 }
             }
         });
+
+        swordLength.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count >= price1){
+                    plus_kill += 3;
+                    countSwordLength++;
+                    count -= price1;
+                    price1 += 20;
+                    textCountLength.setText("УРОВЕНЬ:" + countSwordLength);
+                    textCostLength.setText("СТОИМОСТЬ:" + price1);
+                    text.setText(count + "");
+                }
+            }
+        });
+
+        evil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(count >= price2){
+                    plus_kill += 10;
+                    countEvil++;
+                    count -= price2;
+                    price2 += 50;
+                    textCountEvil.setText("УРОВЕНЬ:" + countEvil);
+                    textCostLength.setText("СТОИМОСТЬ:" + price2);
+                    text.setText(count + "");
+                }
+            }
+        });
+
+        armor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (count >= price3){
+                    plus_kill += 30;
+                    countArmor++;
+                    count -= price3;
+                    price3 += 500;
+                    textCountArmor.setText("УРОВЕНЬ:" + countArmor);
+                    textCostArmor.setText("СТОИМОСТЬ:" + price3);
+                    text.setText(count + "");
+                }
+            }
+        });
+
+
+    }
+
+
+
+    void Saves(){
+        //Метод сохранения кол-ва кликов
+            preferences = getPreferences(MODE_PRIVATE);
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putInt("clicks", count);
+            editor.commit();
+
+
     }
 
 
 
     //Метод сохранения кол-ва кликов
-    public void Save(){
+    public void clicksSave(){
         preferences = getPreferences(MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putInt("clicks", count);
-        editor.putInt("plus_kill", plus_kill);
         editor.commit();
     }
 
@@ -117,7 +201,6 @@ public class MainActivity extends AppCompatActivity {
     public void Load(){
         preferences = getPreferences(MODE_PRIVATE);
         count = preferences.getInt("clicks", 0);
-        plus_kill = preferences.getInt("plus_kill", 1);
         text.setText(count + "");
     }
 
