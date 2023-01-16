@@ -75,7 +75,11 @@ public class MainActivity extends AppCompatActivity {
         Save.init(getApplicationContext());
         new Save().load();
 
+
+
     }
+
+
 
     /*
     TODO сделать прокрутку улучшений - COMPLETE
