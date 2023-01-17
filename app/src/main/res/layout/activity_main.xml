@@ -49,14 +49,15 @@
                 <TextView
                     android:id="@+id/textImprove"
                     android:layout_width="match_parent"
-                    android:layout_height="110dp"
+                    android:layout_height="120dp"
                     android:text="УЛУЧШЕНИЯ"
                     android:textSize="25dp"
                     android:gravity="center"/>
 
                 <ScrollView
+                    android:id="@+id/scroll"
                     android:layout_width="match_parent"
-                    android:paddingTop="100dp"
+                    android:layout_below="@+id/textImprove"
                     android:paddingBottom="25dp"
                     android:layout_height="match_parent">
 
