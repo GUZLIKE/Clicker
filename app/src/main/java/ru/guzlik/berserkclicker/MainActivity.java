@@ -3,8 +3,12 @@ package ru.guzlik.berserkclicker;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionManager;
+import android.view.Gravity;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     static public int plus_kill = 1;
     ImageView improve, knight;
-    RelativeLayout menuDown;
-    LinearLayout menu;
+    RelativeLayout menuDown, menu;
+    LinearLayout menuUp;
     Button angry, swordLength, evil, armor;
     static SharedPreferences preferences;
 
@@ -49,13 +53,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        myView = findViewById(R.id.my_view);
-        myView.setVisibility(View.INVISIBLE);
+        menu = (RelativeLayout) findViewById(R.id.mainMenu);
+        menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
+        menuDown.setVisibility(View.GONE);
         isUp = false;
 
-        menu = (LinearLayout) findViewById(R.id.mainMenu);
-        menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
         angry = (Button) findViewById(R.id.buttonAngry);
         swordLength = (Button) findViewById(R.id.buttonSwordLength);
         evil = (Button) findViewById(R.id.buttonEvil);
@@ -84,15 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     /*
-    TODO сделать прокрутку улучшений - COMPLETE
-    TODO разделить экран на 2 части - COMPLETE
-    TODO сделать кнопку назад - COMPLETE
-    TODO сделать количество улучшений рядом с кнопками - COMPLETE
-    TODO починить - сделать сохранение улучшений (цены увеличиваются, а предмета нет)
-    TODO таймер не должен быть отрицательным - COMPLETE
-    TODO хп монстра не должен быть отрицательным - COMPLETE
     TODO сделать анимацию нажатия кнопки
-    TODO сделать таймер для усиления после убийства босс
     TODO сделать механику найма героев (урон/золото в секунду/броня)
     */
 
@@ -189,36 +183,56 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void slideUp(View view){
-        view.setVisibility(View.VISIBLE);
-        TranslateAnimation animate = new TranslateAnimation(
-                0,                 // fromXDelta
-                0,                 // toXDelta
-                view.getHeight(),  // fromYDelta
-                0);                // toYDelta
-        animate.setDuration(500);
-        animate.setFillAfter(true);
-        view.startAnimation(animate);
-    }
-
-    // slide the view from its current position to below itself
-    public void slideDown(View view){
-        TranslateAnimation animate = new TranslateAnimation(
-                0,                 // fromXDelta
-                0,                 // toXDelta
-                0,                 // fromYDelta
-                view.getHeight()); // toYDelta
-        animate.setDuration(500);
-        animate.setFillAfter(true);
-        view.startAnimation(animate);
-    }
-
-    public void onSlideViewButtonClick(View view) {
-        if (isUp) {
-            slideDown(myView);
-        } else {
-            slideUp(myView);
-        }
+    ////////////////////////
+    public void onSlideViewButtonClick(View view) throws InterruptedException {
+        toggle(isUp);
         isUp = !isUp;
     }
+
+    private void toggle(boolean show) throws InterruptedException {
+        View menuDown = findViewById(R.id.mainMenuDown);
+        ViewGroup parent = findViewById(R.id.mainMenu);
+
+        Transition transition = new Slide(Gravity.BOTTOM);
+        transition.setDuration(500);
+        transition.addTarget(R.id.mainMenuDown);
+
+        TransitionManager.beginDelayedTransition(parent, transition);
+        menuDown.setVisibility(show ? View.GONE : View.VISIBLE);
+
+    }
+    ////////////////////////
+
+//    public void slideUp(View view){
+//        view.setVisibility(View.VISIBLE);
+//        TranslateAnimation animate = new TranslateAnimation(
+//                0,                 // fromXDelta
+//                0,                 // toXDelta
+//                view.getHeight(),  // fromYDelta
+//                0);                // toYDelta
+//        animate.setDuration(500);
+//        animate.setFillAfter(true);
+//        view.startAnimation(animate);
+//    }
+//
+//    // slide the view from its current position to below itself
+//    public void slideDown(View view){
+//        TranslateAnimation animate = new TranslateAnimation(
+//                0,                 // fromXDelta
+//                0,                 // toXDelta
+//                0,                 // fromYDelta
+//                view.getHeight()); // toYDelta
+//        animate.setDuration(500);
+//        animate.setFillAfter(true);
+//        view.startAnimation(animate);
+//    }
+//
+//    public void onSlideViewButtonClick(View view) {
+//        if (isUp) {
+//            slideDown(menuDown);
+//        } else {
+//            slideUp(menuDown);
+//        }
+//        isUp = !isUp;
+//    }
 }
