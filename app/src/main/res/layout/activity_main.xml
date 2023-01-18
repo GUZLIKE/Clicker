@@ -21,7 +21,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:text="0"
-                android:textSize="50dp" />
+                android:textSize="50dp"
+                android:textColor="@color/white"
+
+            />
 
         <ImageView
                 android:id="@+id/kill"
@@ -52,6 +55,7 @@
                     android:layout_height="120dp"
                     android:text="УЛУЧШЕНИЯ"
                     android:textSize="25dp"
+                    android:textColor="@color/white"
                     android:gravity="center"/>
 
                 <ScrollView
@@ -83,7 +87,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
                                 android:text="ГНЕВ\n(+1 клик)"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                             <Button
                                 android:id="@+id/buttonAngry"
@@ -100,7 +106,9 @@
                                 android:elevation="10dp"
                                 android:gravity="center"
                                 android:text="КУПИТЬ"
-                                android:textSize="25dp" />
+                                android:textSize="25dp"
+                                android:textColor="@color/white"
+                                />
 
                             <TextView
                                 android:id="@+id/textCostAngry"
@@ -112,7 +120,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingBottom="5dp"
                                 android:text="СТОИМОСТЬ: 100"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                         </FrameLayout>
 
@@ -131,7 +141,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
                                 android:text="ДЛИНА МЕЧА\n(+3 клика)"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                             <Button
                                 android:id="@+id/buttonSwordLength"
@@ -148,7 +160,9 @@
                                 android:elevation="10dp"
                                 android:gravity="center"
                                 android:text="КУПИТЬ"
-                                android:textSize="25dp" />
+                                android:textSize="25dp"
+                                android:textColor="@color/white"
+                                />
 
                             <TextView
                                 android:id="@+id/textCostLength"
@@ -160,7 +174,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingBottom="5dp"
                                 android:text="СТОИМОСТЬ: 200"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                         </FrameLayout>
 
@@ -178,7 +194,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
                                 android:text="ПРЕДЧУВСТВИЕ ЗЛА\n(+10 кликов)"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                             <Button
                                 android:id="@+id/buttonEvil"
@@ -195,7 +213,9 @@
                                 android:elevation="10dp"
                                 android:gravity="center"
                                 android:text="КУПИТЬ"
-                                android:textSize="25dp" />
+                                android:textSize="25dp"
+                                android:textColor="@color/white"
+                                />
 
                             <TextView
                                 android:id="@+id/textCostEvil"
@@ -207,7 +227,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingBottom="5dp"
                                 android:text="СТОИМОСТЬ: 300"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                         </FrameLayout>
 
@@ -225,7 +247,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingTop="5dp"
                                 android:text="БРОНЯ БЕРСЕРКА\n(+30 кликов)"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
 
                             <Button
                                 android:id="@+id/buttonArmor"
@@ -242,7 +266,9 @@
                                 android:elevation="10dp"
                                 android:gravity="center"
                                 android:text="КУПИТЬ"
-                                android:textSize="25dp" />
+                                android:textSize="25dp"
+                                android:textColor="@color/white"
+                                />
 
                             <TextView
                                 android:id="@+id/textCostArmor"
@@ -254,7 +280,9 @@
                                 android:paddingLeft="10dp"
                                 android:paddingBottom="5dp"
                                 android:text="СТОИМОСТЬ: 500"
-                                android:textSize="20dp" />
+                                android:textSize="20dp"
+                                android:textColor="@color/white"
+                                />
                         </FrameLayout>
 
                     </LinearLayout>

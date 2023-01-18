@@ -1,7 +1,14 @@
 package ru.guzlik.berserkclicker;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -16,30 +23,32 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 public class MainActivity extends AppCompatActivity {
 
 
-    ////
-    Button myButton;
-    View myView;
+    public static final String CHANNEL_ID = "CHANNEL_ID";
+    public static final Integer NOTIFY_ID = 1;
+
     boolean isUp;
-    ////
-    static public int count = 0;
-    static public int countAngry = 0;
-    static public int countSwordLength = 0;
-    static public int countEvil = 0;
-    static public int countArmor = 0;
+    static public long count = 0;
+    static public long countAngry = 0;
+    static public long countSwordLength = 0;
+    static public long countEvil = 0;
+    static public long countArmor = 0;
 
-    static public int price0 = 100;
+    static public long price0 = 100;
 
-    static public int price1 = 200;
+    static public long price1 = 200;
 
-    static public int price2 = 300;
+    static public long price2 = 300;
 
-    static public int price3 = 500;
+    static public long price3 = 500;
 
-    static public int plus_kill = 1;
+    static public long plus_kill = 1;
+
     ImageView improve, knight;
     RelativeLayout menuDown, menu;
     LinearLayout menuUp;
@@ -57,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
         menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
         menuDown.setVisibility(View.GONE);
         isUp = false;
-
         angry = (Button) findViewById(R.id.buttonAngry);
         swordLength = (Button) findViewById(R.id.buttonSwordLength);
         evil = (Button) findViewById(R.id.buttonEvil);
@@ -73,14 +81,13 @@ public class MainActivity extends AppCompatActivity {
         textCountArmor = (TextView) findViewById(R.id.textCountArmor);
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
-        Click();
-        Buttons();
-        Upgrade();
+        click();
+        buttons();
+        upgrade();
         Save.init(getApplicationContext());
         new Save().load();
-
-
-
+        notification();
+        createNotificationChannel();
     }
 
 
@@ -91,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     */
 
 
-    void Click(){
+    void click(){
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    void Buttons(){
+    void buttons(){
 
         knight.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    void Upgrade(){
+    void upgrade(){
         angry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -182,8 +189,36 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    void notification(){
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_IMMUTABLE);
 
-    ////////////////////////
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.berserk)
+                .setContentTitle("ГРИФФИТ ПИДОРАС")
+                .setContentText("ПИЗДУЙ УБЕЙ ГРИФФИТА,ЗАЕБАЛ")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationManagerCompat = NotificationManagerCompat.from(this);
+        notificationManagerCompat.notify(NOTIFY_ID, builder.build());
+
+    }
+
+
+
+    private void createNotificationChannel(){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel berserkClicker = new NotificationChannel(CHANNEL_ID,
+                    "Clicker",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            berserkClicker.setLightColor(Color.GREEN);
+            NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.createNotificationChannel(berserkClicker);
+        }
+    }
+
     public void onSlideViewButtonClick(View view) throws InterruptedException {
         toggle(isUp);
         isUp = !isUp;

@@ -25,10 +25,10 @@ import java.util.Random;
 
 public class Boss extends AppCompatActivity {
 
-    public int damage = MainActivity.plus_kill;
+    public long damage = MainActivity.plus_kill;
     Random random = new SecureRandom();
     int time = random.nextInt(60);
-    int clicks = 0;
+    long clicks = 0;
     int health_boss = random.nextInt(50);
     ImageView boss, back;
     ConstraintLayout layoutFight;
