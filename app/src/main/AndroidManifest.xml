@@ -31,6 +31,10 @@
         <activity
             android:name=".Boss"
             android:exported="false"/>
+
+        <activity
+            android:name=".RunningManAnimation"
+            android:exported="false"/>
     </application>
 
 
