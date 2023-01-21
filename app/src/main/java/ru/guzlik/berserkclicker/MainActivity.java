@@ -1,6 +1,5 @@
 package ru.guzlik.berserkclicker;
 
-import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,7 +7,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.transition.Slide;
 import android.transition.Transition;
@@ -61,10 +59,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        Intent intent = new Intent(MainActivity.this, RunningManAnimation.class);
-        startActivity(intent);
+        View mainView = getLayoutInflater().inflate(R.layout.activity_main, null);
+
+        RelativeLayout container = (RelativeLayout) mainView.findViewById(R.id.forAnimation);
+
+        TestAnimation view = new TestAnimation(this);
+
+        container.addView(view);
+
+        setContentView(mainView);
+
+//        setContentView(R.layout.activity_main);
 
         menu = (RelativeLayout) findViewById(R.id.mainMenu);
         menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
@@ -240,38 +246,4 @@ public class MainActivity extends AppCompatActivity {
         menuDown.setVisibility(show ? View.GONE : View.VISIBLE);
 
     }
-    ////////////////////////
-
-//    public void slideUp(View view){
-//        view.setVisibility(View.VISIBLE);
-//        TranslateAnimation animate = new TranslateAnimation(
-//                0,                 // fromXDelta
-//                0,                 // toXDelta
-//                view.getHeight(),  // fromYDelta
-//                0);                // toYDelta
-//        animate.setDuration(500);
-//        animate.setFillAfter(true);
-//        view.startAnimation(animate);
-//    }
-//
-//    // slide the view from its current position to below itself
-//    public void slideDown(View view){
-//        TranslateAnimation animate = new TranslateAnimation(
-//                0,                 // fromXDelta
-//                0,                 // toXDelta
-//                0,                 // fromYDelta
-//                view.getHeight()); // toYDelta
-//        animate.setDuration(500);
-//        animate.setFillAfter(true);
-//        view.startAnimation(animate);
-//    }
-//
-//    public void onSlideViewButtonClick(View view) {
-//        if (isUp) {
-//            slideDown(menuDown);
-//        } else {
-//            slideUp(menuDown);
-//        }
-//        isUp = !isUp;
-//    }
 }

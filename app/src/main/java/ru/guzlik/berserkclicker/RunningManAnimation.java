@@ -44,17 +44,17 @@ public class RunningManAnimation extends AppCompatActivity {
         private SurfaceHolder ourHolder;
         private volatile boolean playing;
         private Canvas canvas;
-        private Bitmap bitmapRunningMan;
-        private boolean isMoving;
-        private float runSpeedPerSecond = 500;
-        private float manXPos = 10, manYPos = 10;
-        private int frameWidth = 230, frameHeight = 274;
-        private int frameCount = 8;
+        private Bitmap bitmapRunningMan, bitmapStandingMan;
+        private boolean isMoving = true;
+        private float runSpeedPerSecond = 200;
+        private float manXPos = 10, manYPos = 800;
+        private int frameWidth = 460, frameHeight = 548;
+        private int frameCount = 18;
         private int currentFrame = 0;
         private long fps;
         private long timeThisFrame;
         private long lastFrameChangeTime = 0;
-        private int frameLengthInMillisecond = 50;
+        private int frameLengthInMillisecond = 80;
 
         private Rect frameToDraw = new Rect(0, 0, frameWidth, frameHeight);
 
@@ -63,7 +63,11 @@ public class RunningManAnimation extends AppCompatActivity {
         public GameView(Context context) {
             super(context);
             ourHolder = getHolder();
-            bitmapRunningMan = BitmapFactory.decodeResource(getResources(), R.drawable.running_man);
+
+//            bitmapStandingMan = BitmapFactory.decodeResource(getResources(), R.drawable.standing_man);
+//            bitmapStandingMan = Bitmap.createScaledBitmap(bitmapStandingMan, frameWidth * frameCount, frameHeight, false);
+
+            bitmapRunningMan = BitmapFactory.decodeResource(getResources(), R.drawable.guts_flex);
             bitmapRunningMan = Bitmap.createScaledBitmap(bitmapRunningMan, frameWidth * frameCount, frameHeight, false);
         }
 
@@ -84,17 +88,21 @@ public class RunningManAnimation extends AppCompatActivity {
 
         public void update() {
             if (isMoving) {
-                manXPos = manXPos + runSpeedPerSecond / fps;
 
-                if (manXPos > getWidth() - 300) {
-                    //ЧТОБЫ ПЕРСОНАЖ ОПУСКАЛСЯ ПО Y-ОСИ
-                    manYPos += (int) frameHeight;
-                    manXPos = 10;
-                }
+//                if (manXPos >= 400) {
+//                    manXPos = 400;
+//                } else {
+                    manXPos = manXPos + runSpeedPerSecond / fps;
 
-                if (manYPos + frameHeight > getHeight()) {
-                    manYPos = 10;
-                }
+                    if (manXPos > getWidth() - 300) {
+//                    manYPos += (int) frameHeight;
+                        manXPos = 10;
+                    }
+
+//                    if (manYPos + frameHeight > getHeight()) {
+//                        manYPos = 400;
+//                    }
+//                }
             }
         }
 
@@ -122,7 +130,11 @@ public class RunningManAnimation extends AppCompatActivity {
                 canvas.drawColor(Color.WHITE);
                 whereToDraw.set((int) manXPos, (int) manYPos, (int) manXPos + frameWidth, (int) manYPos + frameHeight);
                 manageCurrentFrame();
+//                if (manXPos >= 400){
+//                    canvas.drawBitmap(bitmapStandingMan, frameToDraw, whereToDraw, null);
+//                } else {
                 canvas.drawBitmap(bitmapRunningMan, frameToDraw, whereToDraw, null);
+//                }
                 ourHolder.unlockCanvasAndPost(canvas);
             }
         }
@@ -147,7 +159,7 @@ public class RunningManAnimation extends AppCompatActivity {
         public boolean onTouchEvent(MotionEvent event) {
             switch (event.getAction() & MotionEvent.ACTION_MASK) {
                 case MotionEvent.ACTION_DOWN :
-                    isMoving = !isMoving;
+                    manXPos = 10;
                     break;
             }
 

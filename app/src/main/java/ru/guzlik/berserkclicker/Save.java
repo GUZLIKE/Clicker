@@ -31,6 +31,7 @@ public class Save extends AppCompatActivity {
 //        editor.putInt("countEvil", MainActivity.countEvil);
 //        editor.putInt("countArmor", MainActivity.countArmor);
 //        editor.commit();
+
         editor.putLong("count", MainActivity.count);
         editor.putLong("price0", MainActivity.price0);
         editor.putLong("price1", MainActivity.price1);
@@ -46,7 +47,6 @@ public class Save extends AppCompatActivity {
 
 
     void load() {
-
         MainActivity.price0 = preferences.getLong("price0", MainActivity.price0);
         MainActivity.price1 = preferences.getLong("price1", MainActivity.price1);
         MainActivity.price2 = preferences.getLong("price2", MainActivity.price2);
