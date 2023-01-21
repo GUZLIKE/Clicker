@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.transition.Slide;
 import android.transition.Transition;
 import android.transition.TransitionManager;
@@ -30,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String CHANNEL_ID = "CHANNEL_ID";
     public static final Integer NOTIFY_ID = 1;
 
+
     boolean isUp;
+
+    public int time = 10;
     static public long count = 0;
     static public long countAngry = 0;
     static public long countSwordLength = 0;
@@ -47,11 +51,11 @@ public class MainActivity extends AppCompatActivity {
 
     static public long plus_kill = 1;
 
+    public CountDownTimer timer;
+
     ImageView improve, knight;
     RelativeLayout menuDown, menu;
-    LinearLayout menuUp;
     Button angry, swordLength, evil, armor;
-    static SharedPreferences preferences;
 
     static public TextView text, textCountAngry, textCostAngry, textCostLength, textCountLength,
             textCostEvil,textCountEvil, textCountArmor, textCostArmor;
@@ -96,8 +100,7 @@ public class MainActivity extends AppCompatActivity {
         upgrade();
         Save.init(getApplicationContext());
         new Save().load();
-        notification();
-        createNotificationChannel();
+        backgoundNotification();
     }
 
 
@@ -199,7 +202,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    void notification(){
+
+    public void backgoundNotification(){
+        timer = new CountDownTimer(time*1000,1) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                time--;
+            }
+
+            @Override
+            public void onFinish() {
+            notification();
+            createNotificationChannel();
+            }
+        }.start();
+    }
+
+      void  notification(){
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_IMMUTABLE);
