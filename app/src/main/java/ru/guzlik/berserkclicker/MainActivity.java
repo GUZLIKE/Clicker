@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.transition.Slide;
@@ -24,6 +25,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class MainActivity extends AppCompatActivity {
+    MediaPlayer mySong;
 
 
     public static final String CHANNEL_ID = "CHANNEL_ID";
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     boolean isUp;
 
     public int time = 10;
-    static public long monsterHealthLong = 300;
     static public long count = 0;
     static public long countAngry = 0;
     static public long countSwordLength = 0;
@@ -49,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     static public long price3 = 500;
 
     static public long plus_kill = 1;
+    static public long monsterHealthLong = 300 + (30 * plus_kill);
 
     public CountDownTimer timer;
 
@@ -69,7 +71,11 @@ public class MainActivity extends AppCompatActivity {
         container.addView(view);
         setContentView(mainView);
 
-//        setContentView(R.layout.activity_main);
+
+        mySong = MediaPlayer.create(MainActivity.this, R.raw.guts_theme);
+        mySong.start();
+
+
 
         menu = (RelativeLayout) findViewById(R.id.mainMenu);
         menuDown = (RelativeLayout) findViewById(R.id.mainMenuDown);
@@ -89,7 +95,6 @@ public class MainActivity extends AppCompatActivity {
         textCostArmor = (TextView) findViewById(R.id.textCostArmor);
         textCountArmor = (TextView) findViewById(R.id.textCountArmor);
         monsterHealth = (TextView) findViewById(R.id.textHealthMonster);
-        monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + monsterHealthLong);
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
         click();
@@ -97,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
         upgrade();
         Save.init(getApplicationContext());
         new Save().load();
+        monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + monsterHealthLong);
         backgoundNotification();
     }
 
@@ -115,6 +121,9 @@ public class MainActivity extends AppCompatActivity {
                 if (monsterHealthLong - plus_kill > 0) {
                     monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + monsterHealthLong);
                 }
+
+                TestAnimation.heroX = TestAnimation.monsterX - 300;
+
                 monsterHealthLong -= plus_kill;
 
                 count += plus_kill;
