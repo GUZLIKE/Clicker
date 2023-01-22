@@ -11,17 +11,20 @@ import android.view.Display;
 import android.view.View;
 
 public class TestAnimation extends View {
+
     int screenHeight, screenWidth, newHeigth, newWidth;
     int forestX = 0, backForestX = 0, grassX = 0, backX = 0;
-    int heroX, heroY, heroFrame = 0;
+    int heroX, heroY, heroFrame = 0, monsterFrame, monsterX, monsterY;
     Bitmap forest, backForest, grass, back;
     Bitmap hero[] = new Bitmap[18];
+    Bitmap monster[] = new Bitmap[10];
     Handler handler;
     Runnable runnable;
     final long UPDATE_MILLIS=30;
 
     public TestAnimation(Context context) {
         super(context);
+
         forest = BitmapFactory.decodeResource(getResources(), R.drawable.new_forest);
         backForest = BitmapFactory.decodeResource(getResources(), R.drawable.new_back_forest);
         grass = BitmapFactory.decodeResource(getResources(), R.drawable.grass);
@@ -46,6 +49,18 @@ public class TestAnimation extends View {
         hero[16] = BitmapFactory.decodeResource(getResources(), R.drawable.guts16);
         hero[17] = BitmapFactory.decodeResource(getResources(), R.drawable.guts17);
 
+        monster[0] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit0);
+        monster[1] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit1);
+        monster[2] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit2);
+        monster[3] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit3);
+        monster[4] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit4);
+        monster[5] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit5);
+        monster[6] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit6);
+        monster[7] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit7);
+        monster[8] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit8);
+        monster[9] = BitmapFactory.decodeResource(getResources(), R.drawable.behelit9);
+
+
         Display display = ((Activity) getContext()).getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
@@ -62,8 +77,10 @@ public class TestAnimation extends View {
         grass = Bitmap.createScaledBitmap(grass, newWidth, newHeigth, false);
         back = Bitmap.createScaledBitmap(back, newWidth, newHeigth, false);
 
-        heroX = screenWidth / 2 - 200;
+        heroX = 30;
         heroY = screenHeight - 1200;
+        monsterX = screenWidth + 100;
+        monsterY = screenHeight - 1200;
         handler = new Handler();
         runnable = new Runnable() {
             @Override
@@ -118,6 +135,24 @@ public class TestAnimation extends View {
             heroFrame = 0;
         }
         canvas.drawBitmap(hero[heroFrame], heroX, heroY, null);
+
+        canvas.drawBitmap(monster[monsterFrame], monsterX, monsterY, null);
+        if (MainActivity.monsterHealthLong > 0) {
+            monsterX -= 20;
+            if (monsterX < 900) {
+                monsterX = 900;
+            }
+            monsterFrame++;
+            if (monsterFrame == 3){
+                monsterFrame = 0;
+            }
+        } else {
+                MainActivity.monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: 0");
+                monsterX = screenWidth + 100;
+                monsterY = screenHeight - 1200;
+                MainActivity.monsterHealthLong = 300 + (30 * MainActivity.plus_kill);
+                MainActivity.monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + MainActivity.monsterHealthLong);
+        }
 
         handler.postDelayed(runnable, UPDATE_MILLIS);
     }

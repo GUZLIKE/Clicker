@@ -5,7 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -17,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isUp;
 
     public int time = 10;
+    static public long monsterHealthLong = 300;
     static public long count = 0;
     static public long countAngry = 0;
     static public long countSwordLength = 0;
@@ -58,20 +57,16 @@ public class MainActivity extends AppCompatActivity {
     Button angry, swordLength, evil, armor;
 
     static public TextView text, textCountAngry, textCostAngry, textCostLength, textCountLength,
-            textCostEvil,textCountEvil, textCountArmor, textCostArmor;
+            textCostEvil,textCountEvil, textCountArmor, textCostArmor, monsterHealth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         View mainView = getLayoutInflater().inflate(R.layout.activity_main, null);
-
-        RelativeLayout container = (RelativeLayout) mainView.findViewById(R.id.forAnimation);
-
+        RelativeLayout container = (RelativeLayout) mainView.findViewById(R.id.animation);
         TestAnimation view = new TestAnimation(this);
-
         container.addView(view);
-
         setContentView(mainView);
 
 //        setContentView(R.layout.activity_main);
@@ -93,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         textCountEvil = (TextView) findViewById(R.id.textCountEvil);
         textCostArmor = (TextView) findViewById(R.id.textCostArmor);
         textCountArmor = (TextView) findViewById(R.id.textCountArmor);
+        monsterHealth = (TextView) findViewById(R.id.textHealthMonster);
+        monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + monsterHealthLong);
         improve = (ImageView) findViewById(R.id.improve);
         knight = (ImageView) findViewById(R.id.knight);
         click();
@@ -115,8 +112,14 @@ public class MainActivity extends AppCompatActivity {
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (monsterHealthLong - plus_kill > 0) {
+                    monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + monsterHealthLong);
+                }
+                monsterHealthLong -= plus_kill;
+
                 count += plus_kill;
                 text.setText(count + "");
+
                 new Save().save();
             }
         });
