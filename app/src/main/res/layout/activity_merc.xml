@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/kaska"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="266dp"
+        android:layout_marginEnd="261dp"
+        android:text="КАСКА"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/griffith"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="456dp"
+        android:layout_marginEnd="260dp"
+        android:text="Гриффит"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/farnese"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="271dp"
+        android:layout_marginTop="269dp"
+        android:layout_marginEnd="46dp"
+        android:text="Фарнеза"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/isido"
+        android:layout_width="131dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="271dp"
+        android:layout_marginTop="452dp"
+        android:layout_marginEnd="46dp"
+        android:text="Исидоро"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

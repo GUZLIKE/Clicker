@@ -33,7 +33,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".RunningManAnimation"
+            android:name=".Merc"
             android:exported="false"/>
     </application>
 

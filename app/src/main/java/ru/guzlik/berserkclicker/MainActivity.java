@@ -25,7 +25,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer mySong;
+    public static MediaPlayer mySong;
 
 
     public static final String CHANNEL_ID = "CHANNEL_ID";
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
         knight.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,Boss.class);
+                Intent intent = new Intent(MainActivity.this,Merc.class);
                 startActivity(intent);
             }
         });
@@ -276,5 +276,15 @@ public class MainActivity extends AppCompatActivity {
         TransitionManager.beginDelayedTransition(parent, transition);
         menuDown.setVisibility(show ? View.GONE : View.VISIBLE);
 
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        try {
+            Intent intent = new Intent(MainActivity.this, MainActivity.class); startActivity(intent); mySong.stop(); mySong.release();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

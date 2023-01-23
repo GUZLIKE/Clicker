@@ -109,7 +109,10 @@ public class Boss extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         try {
-            Intent intent = new Intent(Boss.this, MainActivity.class); startActivity(intent); timer.cancel();
+            Intent intent = new Intent(Boss.this, MainActivity.class); startActivity(intent);
+            timer.cancel();
+            MainActivity.mySong.stop();
+            MainActivity.mySong.release();
         } catch (Exception e){
             e.printStackTrace();
         }
