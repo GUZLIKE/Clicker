@@ -13,8 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/animation"
-        android:layout_alignParentBottom="true"
-        />
+        android:layout_above="@+id/menuIcons"
+        >
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -138,7 +140,7 @@
                                 android:id="@+id/textCostAngry"
                                 android:layout_width="wrap_content"
                                 android:layout_height="100dp"
-                                android:layout_gravity="bottom|left"
+                                android:layout_gravity="bottom"
                                 android:elevation="10dp"
                                 android:gravity="bottom"
                                 android:paddingLeft="10dp"
@@ -339,7 +341,7 @@
             android:layout_toRightOf="@+id/improve"
             android:layout_weight="1.0"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/mark" />
+            app:srcCompat="@drawable/label" />
 
         <ImageView
             android:id="@+id/imageView3"
