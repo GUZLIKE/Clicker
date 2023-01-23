@@ -23,15 +23,15 @@ public class TestAnimation extends View {
     Bitmap forest, backForest, grass, back;
     static Bitmap[] hero = new Bitmap[18];
     Bitmap monster[] = new Bitmap[37];
-    Handler handler;
-    Runnable runnable;
+    Handler handler, handler1;
+    Runnable runnable, runnable1;
     final long UPDATE_MILLIS=30;
 
     public TestAnimation(Context context) {
         super(context);
 
-        forest = BitmapFactory.decodeResource(getResources(), R.drawable.new_forest);
-        backForest = BitmapFactory.decodeResource(getResources(), R.drawable.new_back_forest);
+        forest = BitmapFactory.decodeResource(getResources(), R.drawable.forest);
+        backForest = BitmapFactory.decodeResource(getResources(), R.drawable.back_forest);
         grass = BitmapFactory.decodeResource(getResources(), R.drawable.grass);
         back = BitmapFactory.decodeResource(getResources(), R.drawable.backgound_game);
 
@@ -98,21 +98,21 @@ public class TestAnimation extends View {
         display.getSize(size);
         screenWidth = size.x;
         screenHeight = size.y;
-        float height = 1000;
-        float width = 1000;
+        float height = 1920;
+        float width = 1080;
         float ratio = width / height;
         newHeigth = screenHeight;
         newWidth = (int) (ratio * screenHeight);
 
-        backForest = Bitmap.createScaledBitmap(backForest, newWidth, newHeigth-500, false);
-        forest = Bitmap.createScaledBitmap(forest, newWidth, newHeigth-500, false);
-        grass = Bitmap.createScaledBitmap(grass, newWidth, newHeigth, false);
-        back = Bitmap.createScaledBitmap(back, newWidth, newHeigth, false);
-
         heroX = 30;
-        heroY = screenHeight - 1200;
+        heroY = screenHeight / 2;
         monsterX = screenWidth + 100;
-        monsterY = screenHeight - 1200;
+        monsterY = screenHeight / 2;
+
+        grass = Bitmap.createScaledBitmap(grass, newWidth, newHeigth-(heroY+hero[0].getHeight()), false);
+        backForest = Bitmap.createScaledBitmap(backForest, backForest.getWidth(), newHeigth-grass.getHeight()+40, false);
+        forest = Bitmap.createScaledBitmap(forest, forest.getWidth(), newHeigth-grass.getHeight()+40, false);
+        back = Bitmap.createScaledBitmap(back, newWidth, newHeigth, false);
 
         handler = new Handler();
         runnable = new Runnable() {
@@ -124,7 +124,6 @@ public class TestAnimation extends View {
     }
 
     public void drawBackground(Canvas canvas){
-
         if (!fight){
             backX -= 1;
             backForestX -= 3;
@@ -135,9 +134,9 @@ public class TestAnimation extends View {
         if (backX < -newWidth) {
             backX = 0;
         }
-        canvas.drawBitmap(back, backX, 0, null);
+        canvas.drawBitmap(back, backX, -heroY+hero[0].getHeight()+200, null);
         if (backX < screenWidth - newWidth) {
-            canvas.drawBitmap(back, backX + newWidth, 0, null);
+            canvas.drawBitmap(back, backX + newWidth, -heroY+400, null);
         }
 
         if (backForestX < -newWidth) {
@@ -159,9 +158,9 @@ public class TestAnimation extends View {
         if (grassX < -newWidth) {
             grassX = 0;
         }
-        canvas.drawBitmap(grass, grassX, heroY - 700, null);
+        canvas.drawBitmap(grass, grassX, heroY+hero[0].getHeight()-40, null);
         if (grassX < screenWidth - newWidth) {
-            canvas.drawBitmap(grass, grassX + newWidth, heroY - 700, null);
+            canvas.drawBitmap(grass, grassX + newWidth, heroY+hero[0].getHeight()-40, null);
         }
     }
 
@@ -194,7 +193,8 @@ public class TestAnimation extends View {
             MainActivity.monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: 0");
 //                MainActivity.monsterHealth.setVisibility(View.GONE);
             monsterX = screenWidth + 100;
-            monsterY = screenHeight - 1200;
+            monsterY = screenHeight / 2;
+
 
             MainActivity.monsterHealthLong = 300 + (30 * MainActivity.plus_kill);
             MainActivity.monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + MainActivity.monsterHealthLong);
@@ -208,6 +208,7 @@ public class TestAnimation extends View {
         drawBackground(canvas);
         drawHero(canvas);
         drawMonster(canvas);
+
 
         handler.postDelayed(runnable, UPDATE_MILLIS);
     }
