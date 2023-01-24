@@ -12,9 +12,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/animation"
-        android:layout_above="@+id/menuIcons"
-        >
+        android:id="@+id/animation">
 
     </RelativeLayout>
 
@@ -32,17 +30,7 @@
                 android:layout_gravity="center"
                 android:text="0"
                 android:textSize="50dp"
-                android:textColor="@color/white"
-
-            />
-
-        <ImageView
-                android:id="@+id/kill"
-                android:layout_width="189dp"
-                android:layout_height="191dp"
-                app:srcCompat="@drawable/berserk"
-                android:layout_gravity="center"/>
-
+                android:textColor="@color/white" />
     </LinearLayout>
 
     <RelativeLayout
@@ -57,8 +45,7 @@
             android:gravity="center"
             android:text="ЗДОРОВЬЕ МОНСТРА: "
             android:textSize="25dp"
-            android:textColor="@color/white"
-            />
+            android:textColor="@color/white" />
 
     </RelativeLayout>
 
@@ -66,7 +53,6 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_weight=".5"
-        android:layout_above="@+id/menuIcons"
         android:paddingTop="200dp">
 
         <RelativeLayout
@@ -322,7 +308,6 @@
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_height="67dp"
-        android:background="@color/black"
         android:layout_weight=".5"
         >
 

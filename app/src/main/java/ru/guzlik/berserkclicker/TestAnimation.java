@@ -109,7 +109,7 @@ public class TestAnimation extends View {
         monsterX = screenWidth + 100;
         monsterY = screenHeight / 2;
 
-        grass = Bitmap.createScaledBitmap(grass, newWidth, newHeigth-(heroY+hero[0].getHeight()), false);
+        grass = Bitmap.createScaledBitmap(grass, grass.getWidth(), newHeigth-(heroY+hero[0].getHeight()), false);
         backForest = Bitmap.createScaledBitmap(backForest, backForest.getWidth(), newHeigth-grass.getHeight()+40, false);
         forest = Bitmap.createScaledBitmap(forest, forest.getWidth(), newHeigth-grass.getHeight()+40, false);
         back = Bitmap.createScaledBitmap(back, newWidth, newHeigth, false);
@@ -136,7 +136,7 @@ public class TestAnimation extends View {
         }
         canvas.drawBitmap(back, backX, -heroY+hero[0].getHeight()+200, null);
         if (backX < screenWidth - newWidth) {
-            canvas.drawBitmap(back, backX + newWidth, -heroY+400, null);
+            canvas.drawBitmap(back, backX + newWidth, -heroY+hero[0].getHeight()+200, null);
         }
 
         if (backForestX < -newWidth) {
@@ -158,9 +158,9 @@ public class TestAnimation extends View {
         if (grassX < -newWidth) {
             grassX = 0;
         }
-        canvas.drawBitmap(grass, grassX, heroY+hero[0].getHeight()-40, null);
+        canvas.drawBitmap(grass, grassX, heroY+hero[0].getHeight(), null);
         if (grassX < screenWidth - newWidth) {
-            canvas.drawBitmap(grass, grassX + newWidth, heroY+hero[0].getHeight()-40, null);
+            canvas.drawBitmap(grass, grassX + newWidth, heroY+hero[0].getHeight(), null);
         }
     }
 
@@ -194,7 +194,6 @@ public class TestAnimation extends View {
 //                MainActivity.monsterHealth.setVisibility(View.GONE);
             monsterX = screenWidth + 100;
             monsterY = screenHeight / 2;
-
 
             MainActivity.monsterHealthLong = 300 + (30 * MainActivity.plus_kill);
             MainActivity.monsterHealth.setText("ЗДОРОВЬЕ МОНСТРА: " + MainActivity.monsterHealthLong);
