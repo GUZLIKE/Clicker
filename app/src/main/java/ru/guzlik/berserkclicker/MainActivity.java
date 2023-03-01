@@ -237,8 +237,8 @@ public class MainActivity extends AppCompatActivity {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .setSmallIcon(R.drawable.berserk)
-                .setContentTitle("ГРИФФИТ ПИДОРАС")
-                .setContentText("ПИЗДУЙ УБЕЙ ГРИФФИТА,ЗАЕБАЛ")
+                .setContentTitle("ГГ")
+                .setContentText("ВП")
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
